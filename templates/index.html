@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <form method="POST" action="/predict">
+        <table>
+            <tr>
+                <td><input type="number" name="top_left_square" min="0" max="2"></td>
+                <td><input type="number" name="top_middle_square" min="0" max="2"></td>
+                <td><input type="number" name="top_right_square" min="0" max="2"></td>
+            </tr>
+            <tr>
+                <td><input type="number" name="middle_left_square" min="0" max="2"></td>
+                <td><input type="number" name="middle_middle_square" min="0" max="2"></td>
+                <td><input type="number" name="middle_right_square" min="0" max="2"></td>
+            </tr>
+            <tr>
+                <td><input type="number" name="bottom_left_square" min="0" max="2"></td>
+                <td><input type="number" name="bottom_middle_square" min="0" max="2"></td>
+                <td><input type="number" name="bottom_right_square" min="0" max="2"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Predict">
+    </form>
+    
+    {% if prediction is defined %}
+        <p>Prediction: {{ prediction }}</p>
+    {% endif %}
+    {% if error_message is defined %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
+
